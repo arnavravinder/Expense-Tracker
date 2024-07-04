@@ -111,12 +111,13 @@ function loadExpenses() {
 }
 
 const exampleExpenses = [
+    { name: 'Labels for dinobox', amount: 999.00, category: 'Other' },
     { name: 'Lunch', amount: 15.00, category: 'Food' },
     { name: 'Bus Ticket', amount: 2.50, category: 'Transport' },
     { name: 'Movie', amount: 12.00, category: 'Entertainment' },
     { name: 'Coffee', amount: 4.50, category: 'Food' },
     { name: 'Uber', amount: 25.00, category: 'Transport' },
-    // Add more example expenses here
+
 ];
 
 function addExampleExpenses() {
