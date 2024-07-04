@@ -46,22 +46,25 @@ h1, h2 {
 .expense-form {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
-.expense-form input {
-    width: 45%;
+.expense-form input, .expense-form select {
+    width: 30%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    margin-bottom: 10px;
 }
 
-.expense-form input:focus {
+.expense-form input:focus, .expense-form select:focus {
     border-color: #007bff;
 }
 
 .expense-form button {
+    width: 100%;
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -80,6 +83,17 @@ h1, h2 {
     margin-bottom: 20px;
     font-size: 1.2em;
     color: #007bff;
+}
+
+.filter-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-section select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .expense-list {
