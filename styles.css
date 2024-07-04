@@ -161,21 +161,22 @@ h1, h2 {
     background-color: #555; 
 }
 footer {
-    background-color: #f4f4f4;
     padding: 10px 0;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
     font-size: 14px;
+    border-top: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+footer.light-mode {
+    background-color: #f0f0f0;
     color: #666;
-    border-top: 1px solidr#ccc;
 }
 
-footer p {
-    margin: 0;
-}
-
-footer span {
-    color: red;
+footer.dark-mode {
+    background-color: #333;
+    color: #ddd;
 }

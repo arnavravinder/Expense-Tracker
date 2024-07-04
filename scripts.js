@@ -61,10 +61,14 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
     const container = document.querySelector('.container');
     container.classList.toggle('dark-mode');
+    footer.classList.toggle('dark-mode');
+
 
     const listItems = document.querySelectorAll('.expense-list li');
     listItems.forEach(item => {
         item.classList.toggle('dark-mode');
+        footer.classList.toggle('dark-mode');
+
     });
 
     const themeToggleBtn = document.getElementById('theme-toggle');
@@ -252,4 +256,63 @@ document.getElementById('calculate-average').addEventListener('click', function(
     const totalAmount = expenses.reduce((acc, expense) => acc + expense.amount, 0);
     const averageAmount = (totalAmount / expenses.length).toFixed(2);
     alert(`Average Expense Amount: $${averageAmount}`);
+});
+
+document.getElementById('clear-expenses').addEventListener('click', function() {
+    const expenseList = document.getElementById('expense-items');
+    while (expenseList.firstChild) {
+        expenseList.removeChild(expenseList.firstChild);
+    }
+    localStorage.removeItem('expenses');
+    updateTotalExpenses(-parseFloat(document.getElementById('total-expenses').textContent));
+});
+
+document.getElementById('export-csv').addEventListener('click', function() {
+    const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    if (expenses.length === 0) {
+        alert('No expenses to export!');
+        return;
+    }
+
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Name,Amount,Category\n";
+
+    expenses.forEach(expense => {
+        csvContent += `${expense.name},${expense.amount},${expense.category}\n`;
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "expenses.csv");
+    document.body.appendChild(link);
+    link.click();
+});
+
+document.getElementById('sort-expenses').addEventListener('click', function() {
+    const expenseItems = document.querySelectorAll('#expense-items li');
+    const sortedItems = Array.from(expenseItems).sort((a, b) => {
+        const amountA = parseFloat(a.textContent.match(/\$([\d.]+)/)[1]);
+        const amountB = parseFloat(b.textContent.match(/\$([\d.]+)/)[1]);
+        return amountA - amountB;
+    });
+
+    const expenseList = document.getElementById('expense-items');
+    expenseList.innerHTML = '';
+    sortedItems.forEach(item => {
+        expenseList.appendChild(item);
+    });
+});
+
+document.getElementById('filter-name').addEventListener('keyup', function() {
+    const filterValue = this.value.toLowerCase();
+    const expenseItems = document.querySelectorAll('#expense-items li');
+    expenseItems.forEach(item => {
+        const itemName = item.textContent.toLowerCase();
+        if (itemName.includes(filterValue)) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
 });
