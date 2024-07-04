@@ -1,21 +1,46 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container.dark-mode {
+    background-color: #444;
+    color: #fff;
 }
 
 h1, h2 {
     text-align: center;
+    color: inherit;
+}
+
+.theme-switcher {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.theme-switcher button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
 .expense-form {
@@ -29,19 +54,32 @@ h1, h2 {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.expense-form input:focus {
+    border-color: #007bff;
 }
 
 .expense-form button {
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .expense-form button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
+}
+
+.expense-summary {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #007bff;
 }
 
 .expense-list {
@@ -62,4 +100,24 @@ h1, h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.expense-list li.dark-mode {
+    background-color: #555;
+    border-color: #666;
+}
+
+.expense-list button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.expense-list button:hover {
+    background-color: #c82333;
 }

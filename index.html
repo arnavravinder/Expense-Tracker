@@ -9,10 +9,16 @@
 <body>
     <div class="container">
         <h1>Expense Tracker</h1>
+        <div class="theme-switcher">
+            <button id="theme-toggle">🌙</button>
+        </div>
         <div class="expense-form">
             <input type="text" id="expense-name" placeholder="Expense Name">
             <input type="number" id="expense-amount" placeholder="Amount">
             <button id="add-expense">Add Expense</button>
+        </div>
+        <div class="expense-summary">
+            <h2>Total Expenses: $<span id="total-expenses">0.00</span></h2>
         </div>
         <div class="expense-list">
             <h2>Expenses</h2>
