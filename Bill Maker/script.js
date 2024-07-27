@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const billOutput = document.getElementById('bill-output');
     const savePdfButton = document.getElementById('save-pdf');
 
+    const updateSavePdfButtonState = () => {
+        savePdfButton.disabled = !billOutput.innerHTML.trim();
+    };
+
     addItemButton.addEventListener('click', () => {
         const billItem = document.createElement('div');
         billItem.classList.add('bill-item');
@@ -19,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         billItem.querySelector('.remove-item').addEventListener('click', () => {
             billItem.remove();
         });
+
+        updateSavePdfButtonState();
     });
 
     billForm.addEventListener('submit', (event) => {
@@ -74,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         billOutput.innerHTML = billHtml;
+        updateSavePdfButtonState();
     });
 
     savePdfButton.addEventListener('click', () => {
